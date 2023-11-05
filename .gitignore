@@ -1,0 +1,6 @@
+.env
+python/.venv/
+python/myenv/
+__pycache__/
+python/app.db
+monitoring/alertmanager/alertmanager.yml
