@@ -1,5 +1,5 @@
 # Use an official Drupal base image
-FROM drupal:10.1.2-apache
+FROM drupal:10.0.9-php8.2-apache-bullseye
 
 # Install dependencies
 RUN apt-get update && \
@@ -19,7 +19,7 @@ COPY default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
 COPY 000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Make the script executable
-RUN chmod +x /usr/local/bin/entrypoint1.sh
+RUN chmod 777 /usr/local/bin/entrypoint1.sh
 RUN chmod +x /usr/local/etc/php/php.ini
 
 RUN chown -R apache:apache /var/run/apache2
@@ -45,4 +45,4 @@ RUN chown -R apache:apache /etc/ssl
 
 USER apache
 
-CMD ["/usr/local/bin/entrypoint1.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint1.sh"]
